@@ -1,0 +1,8 @@
+<div class="rating-container">
+	<% 5.times do |i| %>
+		<span class="fa fa-star-o" data-rating="<%= i+=1 %>"></span>
+	<% end %>
+	<input type="hidden" name="rating" class="rating-value" value="<%= rating(movie, current_user) %>"/>
+</div>
+
+<h6>Average: <%= movie.ratings.average(:score) %></h6>

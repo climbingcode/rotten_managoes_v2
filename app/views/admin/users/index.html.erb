@@ -1,0 +1,10 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+	<%= link_to admin_user_path(user) do %>
+		<div class="col-md-3 well">
+			<h2><%= user.username.capitalize %></h2>
+			<h3><%= user.email.capitalize %></h3>
+		</div>
+	<% end %>
+<% end %>

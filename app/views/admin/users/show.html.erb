@@ -1,0 +1,32 @@
+<div class="col-sm-7">
+	<h3><%= @user.username.capitalize %></h3>
+	<h4><%= @user.email.capitalize %></h4>
+</div>
+
+<div class="col-md-5 pull-right">
+	<%= link_to "edit", edit_admin_user_path(@user), class: 'btn col-sm-2 btn-info' %>
+	<%= link_to "delete", admin_user_path(@user),method: :delete, class: 'btn col-sm-2 btn-info' %>
+	<%= link_to "Browse as #{@user.username}", browse_as_path(@user), class: 'btn col-sm-4 btn-info' %>
+</div>
+
+<div class="col-md-12">
+
+	<hr>
+
+	<h2>Movies</h2>
+	<% @user.movies.each do |movie| %>
+		<h5><%= movie.title %></h5>
+		<h5>Rating given: <%= movie.ratings.first.score %></h5>
+	<% end %>
+
+	<hr>
+
+	<h2>Comments</h2>
+	<% @user.comments.each do |comment| %>
+		<h4><%= comment.content %></h4>
+		<p><%= comment.created_at.pretty %></p>
+		<p><%= comment.user.username.capitalize %></p>
+		<hr>
+	<% end %>
+
+</div>

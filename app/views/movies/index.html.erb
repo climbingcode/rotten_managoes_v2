@@ -1,0 +1,31 @@
+<h1 class="col-sm-10">Movies</h1>
+
+<%= link_to 'Add Movie', new_movie_path, id: 'create-movie', class: 'col-sm-2 btn btn-success' %>
+
+<%= render "search" %>
+<%= paginate @movies %>
+
+<% @movies.each do |movie| %>
+	
+	<div class="container movie-container col-sm-3">
+		<input type="hidden" name="movie" value="<%= movie.id%>"></input>
+		<h2><%= movie.title.capitalize %></h2>
+		<p><%= movie.director %></p>
+		<p><i>runtime: <%= movie.runtime %></i></p>
+		<img  width="150px" src="<%= movie.poster %>"/>
+		<p>release date: <%= movie.release_date %></p>
+		<%= link_to "edit #{movie.title}", edit_movie_path(movie) %>
+		<%= link_to "remove #{movie.title}", movie_path(movie), method: :delete %>
+		<h6>
+			<% if movie.user %>
+				Posted By: <%= movie.user.username.capitalize %>
+			<% end %>
+		</h6>
+
+		<%= render 'ratings', :movie => movie %>
+
+		<%= render 'comments', :movie => movie %>
+
+	</div>
+
+<% end %>

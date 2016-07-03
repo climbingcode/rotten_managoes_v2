@@ -1,0 +1,16 @@
+<div class="comments">
+
+	<% movie.comments.each do |comment| %>
+		<p><%= comment.content %></p>
+		<i><%= "Author: #{comment.user.username}" if comment.user %> </i>
+		<p><i><%= comment.created_at.pretty %></i></p>
+		<hr>
+	<% end %>
+
+	<%= form_for [movie, @comment] do |f| %>
+		<%= f.text_area :content, class: 'form-control' %>
+		<br>
+			<%= f.submit 'Submit', class: 'btn btn-success' %>
+		</br>
+	<% end %>
+</div>

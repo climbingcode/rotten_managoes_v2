@@ -1,0 +1,25 @@
+<%= form_for @movie do |f| %>
+	<br>
+		<%= f.label :title %>
+		<%= f.text_field :title, class: 'form-control' %>
+	</br>
+	<br>
+		<%= f.label :director %>
+		<%= f.text_field :director, class: 'form-control' %>
+	</br>
+	<br>
+		<%= f.label :poster %>
+		<%= f.file_field :poster, class: 'form-control' %>
+	</br>
+	<br>
+		<%= f.label :runtime %>
+		<%= f.number_field :runtime, class: 'form-control' %>
+	</br>
+	<br>
+		<%= f.label :release_date %>
+		<%= f.date_field :release_date, class: 'form-control' %>
+	</br>
+	<br>
+		<%= f.submit "Create Movie", class: 'btn btn-success' %>
+	</br>
+<% end %>

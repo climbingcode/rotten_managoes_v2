@@ -1,0 +1,19 @@
+<h2>Login to App</h2>
+
+<%= form_tag('/session', method: 'post') do %>
+	<br>
+		<%= label_tag :username %>
+		<%= text_field_tag :username, "", class: 'form-control' %>
+	</br>
+	<br>
+		<%= label_tag :password %>
+		<%= password_field_tag :password, "", class: 'form-control' %>
+	</br>
+	<br>
+		<%= label_tag :password_confirmation %><br />
+	  	<%= password_field_tag :password_confirmation, "", class: 'form-control' %>
+	</br>
+	<br>
+		<%= submit_tag "Login", class: 'btn btn-success' %>
+	</br>
+<% end %>

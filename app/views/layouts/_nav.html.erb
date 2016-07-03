@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+  	<div class="col-xs-6">
+  		<h2>Rotten Managoes</h2>
+  	</div>
+  	<div class="col-xs-5 pull-right">
+      <% if current_user %>
+        <h4 class="col-sm-5">
+          Welcome: <%= current_user.username.capitalize %>  
+        </h4>
+        <%= link_to "Movies", movies_path, class: 'btn btn-default navbar-btn' %>
+        <%= link_to "Log Out", session_path(current_user), method: :delete, class: 'btn btn-default navbar-btn' %>
+      <% else %>
+        <%= link_to "Sign Up", signup_path, class: 'btn btn-default navbar-btn pull-right' %>
+        <%= link_to "Log in", login_path, class: 'btn btn-default navbar-btn pull-right' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

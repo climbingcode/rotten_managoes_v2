@@ -1,0 +1,10 @@
+<footer class="footer navbar-bottom">
+	<div class="col-sm-3 pull-right">
+		<% if current_user && current_user.admin %>
+    		<%= link_to "admin panel", admin_users_path(current_user), class: 'btn btn-default navbar-btn' %>
+		<% end %>
+		<% if session[:admin_id] %>
+			<%= link_to "Return to admin panel", browse_as_path(current_user), class: 'btn btn-default navbar-btn' %>
+    	<% end %>
+	</div>
+</footer>
