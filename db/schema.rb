@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703014506) do
+ActiveRecord::Schema.define(version: 20160703075134) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160703014506) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "genre",        default: ""
   end
 
   create_table "ratings", force: true do |t|

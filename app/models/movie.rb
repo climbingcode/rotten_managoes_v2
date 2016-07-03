@@ -6,9 +6,10 @@ class Movie < ActiveRecord::Base
 
 	mount_uploader :poster, PosterUploader
 
+	scope :search_genre, -> (genre) { where("genre LIKE ?", "#{genre}%") }
 	scope :search_title, -> (title) { where("title LIKE ?", "#{title}%") }
 	scope :search_duration, -> (runtime) { where("runtime #{self.right_duration_query(runtime)}") }
-	scope :search, -> (title = "", runtime = "") { self.search_title(title).search_duration(runtime) }
+	scope :search, -> (title = "", runtime = "", genre = "") { self.search_title(title).search_duration(runtime).search_genre(genre) }
 
 	def Movie.right_duration_query(runtime)
 		case runtime

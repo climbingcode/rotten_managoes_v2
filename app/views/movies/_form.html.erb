@@ -16,6 +16,10 @@
 		<%= f.number_field :runtime, class: 'form-control' %>
 	</br>
 	<br>
+		<%= f.label :genre %>
+		<%= f.select :genre, ['drama', 'comedy', 'action', 'horror', 'sci-fi'], {}, class: 'form-control' %>
+	</br>
+	<br>
 		<%= f.label :release_date %>
 		<%= f.date_field :release_date, class: 'form-control' %>
 	</br>

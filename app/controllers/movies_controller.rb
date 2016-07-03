@@ -3,7 +3,11 @@ class MoviesController < ApplicationController
 	before_filter :authenticate
 
 	def index
-		@movies = Movie.search(params[:query], params[:runtime]).order(:title).page(params[:page]).per(4)
+		@movies = Movie.search(
+			params[:query], 
+			params[:runtime], 
+			params[:genre])
+		.order(:title).page(params[:page]).per(4)
 		@comment = Comment.new
 	end
 
@@ -42,7 +46,7 @@ class MoviesController < ApplicationController
 	private
 
 	def movie_params
-		params.require(:movie).permit(:title, :director, :poster, :runtime, :release_date)
+		params.require(:movie).permit(:title, :director, :poster, :runtime, :genre, :release_date)
 	end
 
 end

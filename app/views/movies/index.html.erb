@@ -3,6 +3,7 @@
 <%= link_to 'Add Movie', new_movie_path, id: 'create-movie', class: 'col-sm-2 btn btn-success' %>
 
 <%= render "search" %>
+
 <%= paginate @movies %>
 
 <% @movies.each do |movie| %>
@@ -14,8 +15,13 @@
 		<p><i>runtime: <%= movie.runtime %></i></p>
 		<img  width="150px" src="<%= movie.poster %>"/>
 		<p>release date: <%= movie.release_date %></p>
-		<%= link_to "edit #{movie.title}", edit_movie_path(movie) %>
-		<%= link_to "remove #{movie.title}", movie_path(movie), method: :delete %>
+		<p>Genre: <%= movie.genre %></p>
+		<%= link_to edit_movie_path(movie) do %>
+			<i class="fa fa-2x fa-pencil-square-o"></i>
+		<% end %>
+		<%= link_to("/movies/#{movie.id}", method: :delete) do %>
+			<i class="fa fa-2x fa-trash"></i>
+		<% end %>
 		<h6>
 			<% if movie.user %>
 				Posted By: <%= movie.user.username.capitalize %>
